@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   PieChart, Pie, Cell, Tooltip, ResponsiveContainer,
-  AreaChart, Area, XAxis, YAxis, CartesianGrid, BarChart, Bar, Legend,
+  AreaChart, Area, XAxis, YAxis, CartesianGrid, BarChart, Bar, 
 } from 'recharts';
 
 const SEVERITY_COLORS = {

@@ -8,7 +8,7 @@ import Modal from '../components/common/Modal';
 import Pagination from '../components/common/Pagination';
 import EmptyState from '../components/common/EmptyState';
 import { SkeletonRow } from '../components/common/Loaders';
-import { format, formatDistanceToNow } from 'date-fns';
+import {  formatDistanceToNow } from 'date-fns';
 import toast from 'react-hot-toast';
 
 const SEVERITY_OPTS = ['critical', 'high', 'medium', 'low', 'info'];

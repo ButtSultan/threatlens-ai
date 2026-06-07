@@ -4,7 +4,7 @@ import {
   HomeIcon, BellAlertIcon, DocumentTextIcon,
   ExclamationTriangleIcon, ClipboardDocumentListIcon,
   MagnifyingGlassIcon, UsersIcon, ArrowLeftOnRectangleIcon,
-  Bars3Icon, XMarkIcon, ShieldCheckIcon,
+  Bars3Icon,  ShieldCheckIcon,
   ChevronDoubleLeftIcon,
 } from '@heroicons/react/24/outline';
 import useAuthStore from '../../store/authStore';

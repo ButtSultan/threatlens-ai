@@ -8,7 +8,7 @@ import { SeverityBadge, StatusBadge } from '../components/common/SeverityBadge';
 import Modal from '../components/common/Modal';
 import Pagination from '../components/common/Pagination';
 import EmptyState from '../components/common/EmptyState';
-import { PageLoader, SkeletonRow } from '../components/common/Loaders';
+import {  SkeletonRow } from '../components/common/Loaders';
 import { formatDistanceToNow, format } from 'date-fns';
 import toast from 'react-hot-toast';
 

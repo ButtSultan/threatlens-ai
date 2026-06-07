@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import {
   ArrowUpTrayIcon, DocumentTextIcon, ArrowPathIcon,
-  CheckCircleIcon, ExclamationCircleIcon,
+  CheckCircleIcon, 
 } from '@heroicons/react/24/outline';
 import api from '../utils/api';
 import Pagination from '../components/common/Pagination';
