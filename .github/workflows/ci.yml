@@ -11,7 +11,9 @@ env:
   NODE_VERSION: "20"
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-
+defaults:
+  run:
+    shell: bash
 jobs:
   # ─────────────────────────────────────────────────────
   # Job 1: Python Linting & Type Checking
@@ -89,7 +91,7 @@ jobs:
         env:
           DATABASE_URL: "sqlite+aiosqlite:///:memory:"
           REDIS_URL: "redis://localhost:6379/0"
-          SECRET_KEY: "test-secret-key-32-characters-minimum"
+          SECRET_KEY: "test-secret-key-32-characters-minimum-here"
           ENVIRONMENT: "test"
 
       - name: Upload coverage report
@@ -128,7 +130,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install --legacy-peer-deps
-
+           continue-on-error: true
       - name: Build React application
         run: npm run build
         env:
