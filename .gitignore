@@ -1,0 +1,92 @@
+# ── Python ────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.pyd
+.Python
+env/
+venv/
+.venv/
+ENV/
+.env
+!.env.example
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.nox/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pytype/
+.pyre/
+
+# ── Node / React ──────────────────────────────────────
+node_modules/
+frontend/build/
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ── IDE / Editor ──────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+*.suo
+*.user
+.DS_Store
+Thumbs.db
+*.orig
+
+# ── Docker ────────────────────────────────────────────
+docker-compose.override.yml
+
+# ── Logs & Runtime ────────────────────────────────────
+*.log
+logs/
+*.pid
+
+# ── Security ──────────────────────────────────────────
+*.pem
+*.key
+*.crt
+*.p12
+secrets/
+
+# ── Generated ─────────────────────────────────────────
+reports/*.pdf
+uploads/*
+!uploads/.gitkeep
+bandit-report.json
+
+# ── Database ──────────────────────────────────────────
+*.db
+*.sqlite
+*.sqlite3
+
+# ── OS ────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini

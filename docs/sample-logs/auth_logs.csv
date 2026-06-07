@@ -1,0 +1,19 @@
+timestamp,source_ip,destination_ip,username,event_type,event_id,message,hostname,status
+2024-01-15T09:00:01Z,10.50.0.100,192.168.1.10,mwilson,authentication_failure,4625,Logon failure - wrong password,CORP-DC01,FAILURE
+2024-01-15T09:00:15Z,10.50.0.100,192.168.1.10,mwilson,authentication_failure,4625,Logon failure - wrong password,CORP-DC01,FAILURE
+2024-01-15T09:00:29Z,10.50.0.100,192.168.1.10,mwilson,authentication_failure,4625,Logon failure - wrong password,CORP-DC01,FAILURE
+2024-01-15T09:00:43Z,10.50.0.100,192.168.1.10,mwilson,authentication_failure,4625,Logon failure - wrong password,CORP-DC01,FAILURE
+2024-01-15T09:00:57Z,10.50.0.100,192.168.1.10,mwilson,authentication_failure,4625,Logon failure - wrong password,CORP-DC01,FAILURE
+2024-01-15T09:01:11Z,10.50.0.100,192.168.1.10,mwilson,authentication_failure,4625,Logon failure - wrong password,CORP-DC01,FAILURE
+2024-01-15T09:01:25Z,10.50.0.100,192.168.1.10,mwilson,authentication_failure,4625,Logon failure - wrong password,CORP-DC01,FAILURE
+2024-01-15T09:01:39Z,10.50.0.100,192.168.1.10,mwilson,authentication_failure,4625,Logon failure - wrong password,CORP-DC01,FAILURE
+2024-01-15T09:02:00Z,10.50.0.100,192.168.1.10,jsmith,authentication_failure,4625,Logon failure - wrong password,CORP-DC01,FAILURE
+2024-01-15T09:02:15Z,10.50.0.100,192.168.1.10,bthomas,authentication_failure,4625,Logon failure - wrong password,CORP-DC01,FAILURE
+2024-01-15T09:02:30Z,10.50.0.100,192.168.1.10,agarcia,authentication_failure,4625,Logon failure - wrong password,CORP-DC01,FAILURE
+2024-01-15T09:02:45Z,10.50.0.100,192.168.1.10,admin,authentication_failure,4625,Logon failure - wrong password,CORP-DC01,FAILURE
+2024-01-15T09:03:00Z,10.50.0.100,192.168.1.10,administrator,authentication_failure,4625,Logon failure - wrong password,CORP-DC01,FAILURE
+2024-01-15T09:05:00Z,10.50.0.100,192.168.1.10,mwilson,authentication_success,4624,An account was successfully logged on,CORP-DC01,SUCCESS
+2024-01-15T09:06:00Z,10.50.0.100,192.168.1.10,mwilson,privilege_escalation,4672,Special privileges assigned to new logon,CORP-DC01,SUCCESS
+2024-01-15T09:07:00Z,10.50.0.100,192.168.1.10,mwilson,user_management,4728,A member was added to a security-enabled global group - Administrators,CORP-DC01,SUCCESS
+2024-01-15T09:10:00Z,10.50.0.100,192.168.1.10,mwilson,file_access,4663,An attempt was made to access an object - C:\Windows\NTDS\ntds.dit,CORP-DC01,SUCCESS
+2024-01-15T09:12:00Z,10.50.0.100,192.168.1.10,mwilson,process_creation,4688,A new process has been created - cmd.exe /c procdump -ma lsass.exe lsass.dmp,CORP-DC01,SUCCESS

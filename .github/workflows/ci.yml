@@ -1,0 +1,267 @@
+name: ThreatLens AI — CI Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+env:
+  PYTHON_VERSION: "3.12"
+  NODE_VERSION: "20"
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  # ─────────────────────────────────────────────────────
+  # Job 1: Python Linting & Type Checking
+  # ─────────────────────────────────────────────────────
+  lint-backend:
+    name: Backend Lint
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - name: Install linting dependencies
+        run: |
+          pip install --upgrade pip
+          pip install flake8 black isort
+
+      - name: Check formatting with black
+        run: black --check --diff app/ tests/ || echo "::warning::Black formatting issues found"
+
+      - name: Check import ordering with isort
+        run: isort --check-only --diff app/ || echo "::warning::Import ordering issues found"
+
+      - name: Lint with flake8
+        run: |
+          flake8 app/ \
+            --max-line-length=120 \
+            --extend-ignore=E501,W503,E203 \
+            --exclude=__pycache__,migrations
+
+  # ─────────────────────────────────────────────────────
+  # Job 2: Backend Tests
+  # ─────────────────────────────────────────────────────
+  test-backend:
+    name: Backend Tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run tests with coverage
+        run: |
+          pytest \
+            --cov=app \
+            --cov-report=xml \
+            --cov-report=term-missing \
+            --cov-fail-under=80 \
+            -v \
+            --tb=short \
+            ../tests/
+        env:
+          DATABASE_URL: "sqlite+aiosqlite:///:memory:"
+          REDIS_URL: "redis://localhost:6379/0"
+          SECRET_KEY: "test-secret-key-32-characters-minimum"
+          ENVIRONMENT: "test"
+
+      - name: Upload coverage report
+        uses: codecov/codecov-action@v4
+        if: always()
+        with:
+          file: backend/coverage.xml
+          fail_ci_if_error: false
+
+      - name: Upload HTML coverage report as artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-html
+          path: backend/htmlcov/
+          retention-days: 7
+
+  # ─────────────────────────────────────────────────────
+  # Job 3: Frontend Lint & Build
+  # ─────────────────────────────────────────────────────
+  lint-build-frontend:
+    name: Frontend Lint & Build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Build React application
+        run: npm run build
+        env:
+          REACT_APP_API_URL: /api/v1
+          CI: false  # Prevent warnings from failing build
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-build
+          path: frontend/build/
+          retention-days: 1
+
+  # ─────────────────────────────────────────────────────
+  # Job 4: Security Scanning
+  # ─────────────────────────────────────────────────────
+  security-scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - name: Install security tools
+        run: pip install bandit safety pip-audit
+
+      - name: Run Bandit security linter
+        run: |
+          bandit -r app/ \
+            -x app/tests \
+            -ll \
+            --format json \
+            -o bandit-report.json || true
+          bandit -r app/ -x app/tests -ll
+
+      - name: Run Safety vulnerability check
+        run: safety check -r requirements.txt --full-report || echo "::warning::Safety found vulnerabilities"
+
+      - name: Run pip-audit
+        run: pip-audit -r requirements.txt || echo "::warning::pip-audit found issues"
+
+      - name: Upload Bandit report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bandit-security-report
+          path: backend/bandit-report.json
+          retention-days: 30
+
+  # ─────────────────────────────────────────────────────
+  # Job 5: Docker Build Validation
+  # ─────────────────────────────────────────────────────
+  docker-build:
+    name: Docker Build
+    runs-on: ubuntu-latest
+    needs: [test-backend, lint-build-frontend]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build backend Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./backend
+          push: false
+          tags: threatlens-ai/backend:test
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build frontend Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./frontend
+          push: false
+          tags: threatlens-ai/frontend:test
+          build-args: REACT_APP_API_URL=/api/v1
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # ─────────────────────────────────────────────────────
+  # Job 6: Integration Test with Docker Compose
+  # ─────────────────────────────────────────────────────
+  integration-test:
+    name: Docker Compose Integration
+    runs-on: ubuntu-latest
+    needs: [docker-build]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create .env file
+        run: |
+          cp .env.example .env
+          echo "SECRET_KEY=ci-test-secret-key-minimum-32-chars" >> .env
+          echo "ENVIRONMENT=test" >> .env
+
+      - name: Start services with Docker Compose
+        run: |
+          docker compose up -d --build
+          echo "Waiting for services to be healthy..."
+          sleep 30
+
+      - name: Check service health
+        run: |
+          curl --fail --retry 5 --retry-delay 5 http://localhost/health || \
+          (docker compose logs backend && exit 1)
+
+      - name: Run basic smoke test
+        run: |
+          # Verify health endpoint
+          curl -f http://localhost/health
+          # Verify API docs available
+          curl -f http://localhost/api/docs
+
+      - name: Show service logs on failure
+        if: failure()
+        run: docker compose logs
+
+      - name: Tear down
+        if: always()
+        run: docker compose down -v

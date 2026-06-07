@@ -1,0 +1,48 @@
+# ── Web Framework ──────────────────────────────────────
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+
+# ── Database ───────────────────────────────────────────
+sqlalchemy[asyncio]==2.0.30
+asyncpg==0.29.0
+alembic==1.13.1
+psycopg2-binary==2.9.9
+greenlet==3.0.3
+
+# ── Validation & Settings ──────────────────────────────
+pydantic==2.7.1
+pydantic-settings==2.2.1
+email-validator==2.1.1
+
+# ── Security ───────────────────────────────────────────
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+
+# ── File Handling ──────────────────────────────────────
+python-multipart==0.0.9
+aiofiles==23.2.1
+
+# ── Cache ──────────────────────────────────────────────
+redis[asyncio]==5.0.4
+
+# ── HTTP Client ────────────────────────────────────────
+httpx==0.27.0
+
+# ── Logging ────────────────────────────────────────────
+python-json-logger==2.0.7
+
+# ── Report Generation ──────────────────────────────────
+fpdf2==2.7.9
+
+# ── Data Processing ────────────────────────────────────
+pandas==2.2.2
+python-dateutil==2.9.0
+
+# ── Rate Limiting ──────────────────────────────────────
+slowapi==0.1.9
+
+# ── Testing ────────────────────────────────────────────
+pytest==8.2.0
+pytest-asyncio==0.23.6
+pytest-cov==5.0.0
+aiosqlite==0.20.0
